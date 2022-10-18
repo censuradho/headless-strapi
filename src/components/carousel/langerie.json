@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_carousel_langeries",
+  "info": {
+    "displayName": "langerie"
+  },
+  "options": {},
+  "attributes": {
+    "teste": {
+      "type": "string"
+    }
+  }
+}

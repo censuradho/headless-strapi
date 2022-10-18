@@ -1,0 +1,79 @@
+{
+    "kind": "collectionType",
+    "collectionName": "products",
+    "info": {
+        "singularName": "product",
+        "pluralName": "products",
+        "displayName": "product",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "string"
+        },
+        "price": {
+            "type": "decimal"
+        },
+        "image": {
+            "type": "media",
+            "multiple": true,
+            "required": true,
+            "allowedTypes": [
+                "images",
+                "videos"
+            ]
+        },
+        "discount": {
+            "type": "float",
+            "max": 100,
+            "min": 0,
+            "default": 0
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "name"
+        },
+        "category": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "api::category.category"
+        },
+        "hoverImage": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "defaultImage": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "videoPreview": {
+            "type": "string"
+        },
+        "installment": {
+            "type": "integer",
+            "max": 12,
+            "min": 1
+        },
+        "sizes": {
+            "type": "component",
+            "repeatable": true,
+            "component": "product.size"
+        }
+    }
+}
