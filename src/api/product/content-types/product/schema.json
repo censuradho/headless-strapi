@@ -19,9 +19,6 @@
     "description": {
       "type": "string"
     },
-    "price": {
-      "type": "decimal"
-    },
     "image": {
       "type": "media",
       "multiple": true,
@@ -30,12 +27,6 @@
         "images",
         "videos"
       ]
-    },
-    "discount": {
-      "type": "float",
-      "max": 100,
-      "min": 0,
-      "default": 0
     },
     "slug": {
       "type": "uid",
@@ -49,7 +40,7 @@
     "hoverImage": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
@@ -65,15 +56,15 @@
     "videoPreview": {
       "type": "string"
     },
-    "installment": {
-      "type": "integer",
-      "max": 12,
-      "min": 1
+    "price": {
+      "type": "float",
+      "required": true
     },
-    "sizes": {
-      "type": "component",
-      "repeatable": true,
-      "component": "product.size"
+    "inventories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "product"
     }
   }
 }

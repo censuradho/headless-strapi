@@ -48,11 +48,6 @@
       "type": "component",
       "repeatable": false,
       "component": "carousel.langerie"
-    },
-    "lubri": {
-      "type": "component",
-      "repeatable": true,
-      "component": "carousel.category"
     }
   }
 }

@@ -63,10 +63,16 @@
             "inversedBy": "users",
             "configurable": false
         },
-        "wishlist": {
+        "addresss": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::user-address.user-address",
+            "mappedBy": "user"
+        },
+        "cart": {
             "type": "relation",
             "relation": "oneToOne",
-            "target": "api::wishlist.wishlist",
+            "target": "api::cart.cart",
             "mappedBy": "user"
         }
     }

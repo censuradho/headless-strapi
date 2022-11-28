@@ -5,7 +5,12 @@
   },
   "options": {},
   "attributes": {
-    "teste": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "title": {
       "type": "string"
     }
   }
