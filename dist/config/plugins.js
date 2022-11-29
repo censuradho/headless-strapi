@@ -1,5 +1,6 @@
-module.exports = ({ env }) => ({
-    // ...
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = ({ env }) => ({
     upload: {
         config: {
             provider: 'cloudinary',
@@ -14,5 +15,4 @@ module.exports = ({ env }) => ({
             },
         },
     },
-    // ...
 });
