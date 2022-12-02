@@ -647,11 +647,6 @@ export interface PluginUsersPermissionsUser extends CollectionTypeSchema {
       'oneToMany',
       'api::user-address.user-address'
     >;
-    cart: RelationAttribute<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::cart.cart'
-    >;
     perfil: RelationAttribute<
       'plugin::users-permissions.user',
       'oneToOne',

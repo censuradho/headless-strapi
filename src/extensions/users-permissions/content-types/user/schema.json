@@ -69,12 +69,6 @@
       "target": "api::user-address.user-address",
       "mappedBy": "user"
     },
-    "cart": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cart.cart",
-      "mappedBy": "user"
-    },
     "perfil": {
       "type": "relation",
       "relation": "oneToOne",
@@ -86,6 +80,12 @@
       "relation": "oneToMany",
       "target": "api::order.order",
       "mappedBy": "user"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "author"
     }
   }
 }

@@ -8,10 +8,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
   async find(ctx) {
     const { user } = ctx.state
 
-    const { data, meta } = await super.find({
-      ...ctx,
-      user: user.id
-    });
+    const { data, meta } = await super.find(ctx);
 
 
     return { data, meta };

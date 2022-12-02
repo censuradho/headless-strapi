@@ -1,0 +1,46 @@
+{
+    "kind": "collectionType",
+    "collectionName": "perfils",
+    "info": {
+        "singularName": "perfil",
+        "pluralName": "perfils",
+        "displayName": "perfil",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "user": {
+            "type": "relation",
+            "relation": "oneToOne",
+            "target": "plugin::users-permissions.user",
+            "inversedBy": "perfil"
+        },
+        "firstName": {
+            "type": "string",
+            "required": true
+        },
+        "lastName": {
+            "type": "string",
+            "required": true
+        },
+        "gender": {
+            "type": "string",
+            "required": true
+        },
+        "clientDocument": {
+            "type": "string",
+            "required": true
+        },
+        "phone": {
+            "type": "string",
+            "required": true
+        },
+        "birthDate": {
+            "type": "string",
+            "required": true
+        }
+    }
+}

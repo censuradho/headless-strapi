@@ -1,0 +1,17 @@
+{
+    "collectionName": "components_carousel_langeries",
+    "info": {
+        "displayName": "langerie"
+    },
+    "options": {},
+    "attributes": {
+        "products": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::product.product"
+        },
+        "title": {
+            "type": "string"
+        }
+    }
+}
