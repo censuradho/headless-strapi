@@ -5,13 +5,13 @@ import { sanitize } from '@strapi/utils'
 
 import { factories } from '@strapi/strapi'
 
-const articleEntityUID = 'api::article.article'
+const entityUID = 'api::article.article'
 
-export default factories.createCoreController(articleEntityUID, ({ strapi }) => ({
+export default factories.createCoreController(entityUID, ({ strapi }) => ({
   async create (ctx) {
     ctx.request.body.data.author = ctx.state.user.id;
 
-    const entity = await strapi.service(articleEntityUID).create(ctx.request.body);
+    const entity = await strapi.service(entityUID).create(ctx.request.body);
     return entity
   },
 
@@ -20,7 +20,7 @@ export default factories.createCoreController(articleEntityUID, ({ strapi }) => 
     const { user } = ctx.state
 
     
-    const [article] = await strapi.entityService.findMany(articleEntityUID, {
+    const [article] = await strapi.entityService.findMany(entityUID, {
       filters: {
         id,
         author: {
@@ -40,7 +40,7 @@ export default factories.createCoreController(articleEntityUID, ({ strapi }) => 
     const { user } = ctx.state
     const { id } = ctx.request.params
     
-    const [article] = await strapi.entityService.findMany(articleEntityUID, {
+    const [article] = await strapi.entityService.findMany(entityUID, {
       filters: {
         id,
         author: {
@@ -63,7 +63,7 @@ export default factories.createCoreController(articleEntityUID, ({ strapi }) => 
 
     const { filters } = query || {}
 
-    const articles = await strapi.entityService.findMany(articleEntityUID, {
+    const articles = await strapi.entityService.findMany(entityUID, {
       filters: {
         ...filters,
         author: {
@@ -83,7 +83,8 @@ export default factories.createCoreController(articleEntityUID, ({ strapi }) => 
 
     const { filters } = query || {}
 
-    const article = await strapi.entityService.findMany(articleEntityUID, {
+    const article = await strapi.entityService.findMany(entityUID, {
+      ...query,
       filters: {
         ...filters,
         id,
