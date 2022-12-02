@@ -14,8 +14,14 @@ export default [
       },
     },
   },
+  {
+    name: 'strapi::cors',
+    config: {
+      enabled: true,
+      origin: ['*']
+    }
+  },
   'strapi::security',
-  'strapi::cors',
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',

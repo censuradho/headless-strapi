@@ -74,6 +74,18 @@
       "relation": "oneToOne",
       "target": "api::cart.cart",
       "mappedBy": "user"
+    },
+    "perfil": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::perfil.perfil",
+      "mappedBy": "user"
+    },
+    "orders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order.order",
+      "mappedBy": "user"
     }
   }
 }

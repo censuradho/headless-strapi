@@ -41,6 +41,14 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "addresss"
+    },
+    "isMain": {
+      "type": "boolean",
+      "default": false
+    },
+    "numero": {
+      "type": "integer",
+      "required": true
     }
   }
 }
