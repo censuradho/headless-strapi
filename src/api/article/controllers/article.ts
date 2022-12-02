@@ -1,17 +1,17 @@
-import { sanitizeEntity } from '@strapi/strapi/lib/utils'
+import { sanitize } from '@strapi/utils'
 /**
  * article controller
  */
 
 import { factories } from '@strapi/strapi'
 
-const articleUID = 'api::article.article'
+const articleEntityUID = 'api::article.article'
 
-export default factories.createCoreController(articleUID, ({ strapi }) => ({
+export default factories.createCoreController(articleEntityUID, ({ strapi }) => ({
   async create (ctx) {
     ctx.request.body.data.author = ctx.state.user.id;
 
-    const entity = await strapi.service(articleUID).create(ctx.request.body);
+    const entity = await strapi.service(articleEntityUID).create(ctx.request.body);
     return entity
   },
 
@@ -20,14 +20,13 @@ export default factories.createCoreController(articleUID, ({ strapi }) => ({
     const { user } = ctx.state
 
     
-    const [article] = await strapi.entityService.findMany(articleUID, {
+    const [article] = await strapi.entityService.findMany(articleEntityUID, {
       filters: {
         id,
         author: {
           id: user.id
         }
       },
-      populate: '*'
     });
 
     if (!article) return ctx.unauthorized(`You can't update this entry`);
@@ -37,24 +36,66 @@ export default factories.createCoreController(articleUID, ({ strapi }) => ({
     return entry
   },
 
-  
   async delete (ctx) {
     const { user } = ctx.state
     const { id } = ctx.request.params
     
-    const [article] = await strapi.entityService.findMany(articleUID, {
+    const [article] = await strapi.entityService.findMany(articleEntityUID, {
       filters: {
         id,
         author: {
           id: user.id
         }
       },
-      populate: '*'
     });
 
     if (!article) return ctx.unauthorized(`You can't update this entry`);
     
     const entry = await super.delete(ctx)
+
+    return entry
+  },
+
+  async find (ctx) {
+    const { user } = ctx.state
+
+    const { query } = ctx.request || {}
+
+    const { filters } = query || {}
+
+    const articles = await strapi.entityService.findMany(articleEntityUID, {
+      filters: {
+        ...filters,
+        author: {
+          id: user.id
+        }
+      },
+    });
+
+    return articles
+  },
+
+  async findOne (ctx) {
+    const { id } = ctx.params;
+    const { user } = ctx.state
+
+    const { query } = ctx.request || {}
+
+    const { filters } = query || {}
+
+    const article = await strapi.entityService.findMany(articleEntityUID, {
+      filters: {
+        ...filters,
+        id,
+        author: {
+          id: user.id
+        }
+      },
+    });
+
+    if (!article) return { data: {} }
+
+    const entry = await super.findOne(ctx)
 
     return entry
   }
