@@ -30,7 +30,6 @@ export default factories.createCoreController('api::perfil.perfil', {
   async update (ctx) {
     const { id } = ctx.params;
     const { user } = ctx.state
-
     
     const [result] = await strapi.entityService.findMany(entityUID, {
       filters: {
@@ -77,7 +76,7 @@ export default factories.createCoreController('api::perfil.perfil', {
 
     const { filters } = query || {}
 
-    const [article] = await strapi.entityService.findMany(entityUID, {
+    const [savedEntry] = await strapi.entityService.findMany(entityUID, {
       ...query,
       filters: {
         ...filters,
@@ -88,11 +87,9 @@ export default factories.createCoreController('api::perfil.perfil', {
       },
     });
 
-    if (!article) return { data: {} }
+    if (!savedEntry) return { data: {} }
 
-    const entry = await super.findOne(ctx)
-
-    return this.transformResponse(entry)
+    return this.transformResponse(savedEntry)
   }
 
 });

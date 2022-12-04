@@ -75,7 +75,7 @@ export default factories.createCoreController(entityUID, ({ strapi }) => ({
 
     const { filters } = query || {}
 
-    const [article] = await strapi.entityService.findMany(entityUID, {
+    const [savedEntry] = await strapi.entityService.findMany(entityUID, {
       ...query,
       filters: {
         ...filters,
@@ -86,10 +86,8 @@ export default factories.createCoreController(entityUID, ({ strapi }) => ({
       },
     });
 
-    if (!article) return { data: {} }
+    if (!savedEntry) return { data: {} }
 
-    const entry = await super.findOne(ctx)
-
-    return this.transformResponse(entry)
+    return this.transformResponse(savedEntry)
   }
 }));
