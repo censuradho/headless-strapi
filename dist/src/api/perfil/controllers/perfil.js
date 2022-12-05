@@ -57,7 +57,7 @@ exports.default = strapi_1.factories.createCoreController('api::perfil.perfil', 
         const { user } = ctx.state;
         const { query } = ctx.request || {};
         const { filters } = query || {};
-        const [article] = await strapi.entityService.findMany(entityUID, {
+        const [savedEntry] = await strapi.entityService.findMany(entityUID, {
             ...query,
             filters: {
                 ...filters,
@@ -67,9 +67,8 @@ exports.default = strapi_1.factories.createCoreController('api::perfil.perfil', 
                 }
             },
         });
-        if (!article)
+        if (!savedEntry)
             return { data: {} };
-        const entry = await super.findOne(ctx);
-        return this.transformResponse(entry);
+        return this.transformResponse(savedEntry);
     }
 });

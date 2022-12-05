@@ -15,4 +15,8 @@ exports.default = ({ env }) => ({
             },
         },
     },
+    'strapi-pagseguro': {
+        enabled: true,
+        resolve: './src/plugins/strapi-pagseguro' // path to plugin folder
+    },
 });
