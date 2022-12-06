@@ -1,17 +1,19 @@
 "use strict";
 /**
- * A set of functions called "actions" for `charge`
+ * charge controller
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = {
-    exampleAction: async (ctx, next) => {
+const strapi_1 = require("@strapi/strapi");
+const validations_1 = require("../content-types/validations");
+exports.default = strapi_1.factories.createCoreController('api::charge.charge', ({ strapi }) => ({
+    async token(ctx) {
+        const { body } = ctx.request;
         try {
-            ctx.body = 'ok';
+            await validations_1.generateChargeTokenSchemaValidation.validate(body);
         }
         catch (err) {
-            ctx.body = err;
+            return ctx.badRequest(err.message, err);
         }
-    },
-    token: async (ctx, next) => {
+        return {};
     }
-};
+}));

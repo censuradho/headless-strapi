@@ -1,0 +1,29 @@
+{
+    "kind": "collectionType",
+    "collectionName": "charges",
+    "info": {
+        "singularName": "charge",
+        "pluralName": "charges",
+        "displayName": "charge"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "reference_id": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "amount": {
+            "type": "json",
+            "required": true
+        },
+        "payment_method": {
+            "type": "json",
+            "required": true
+        }
+    }
+}

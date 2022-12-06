@@ -9,7 +9,9 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/uuid": "^9.0.0"
+  },
   "dependencies": {
     "@strapi-newsletter/strapi": "^0.1.2",
     "@strapi/plugin-i18n": "4.4.3",
@@ -17,9 +19,11 @@
     "@strapi/plugin-users-permissions": "4.4.3",
     "@strapi/provider-upload-cloudinary": "^4.5.2",
     "@strapi/strapi": "4.4.3",
+    "axios": "^1.2.1",
     "better-sqlite3": "7.4.6",
     "strapi-plugin-menus": "^1.1.0",
-    "strapi-stripe": "^2.5.1"
+    "strapi-stripe": "^2.5.1",
+    "yup": "^0.32.11"
   },
   "author": {
     "name": "Censuradho"

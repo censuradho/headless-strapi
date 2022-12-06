@@ -2,12 +2,6 @@
  * charge service
  */
 
-import { pagSeguroApi } from "../../../lib/pag-seguro";
+import { factories } from '@strapi/strapi';
 
-
-
-export default () => ({
-  generateToken: async (params) => {
-    
-  }
-});
+export default factories.createCoreService('api::charge.charge');
