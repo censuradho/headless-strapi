@@ -16,10 +16,6 @@
       "type": "float",
       "required": true
     },
-    "checkoutSession": {
-      "type": "string",
-      "required": true
-    },
     "product": {
       "type": "relation",
       "relation": "manyToOne",

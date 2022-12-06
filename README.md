@@ -1,6 +1,7 @@
 ## responses status
 
 [docs](https://strapi.gitee.io/documentation/3.0.0-alpha.x/guides/responses.html#advanced-responses)
+
 ctx.response.badRequest([message], [data])
 ctx.response.unauthorized([message], [scheme], [attributes])
 ctx.response.paymentRequired([message], [data])
@@ -25,3 +26,7 @@ ctx.response.locked([message], [data])
 ctx.response.preconditionRequired([message], [data])
 ctx.response.tooManyRequests([message], [data])
 ctx.response.illegal([message], [data])
+
+### Pagseguro cartões de crédito teste
+
+[docs](https://dev.pagseguro.uol.com.br/reference/testing-cards)
