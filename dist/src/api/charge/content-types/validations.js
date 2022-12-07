@@ -32,7 +32,6 @@ exports.generateChargeTokenSchemaValidation = y.object({
         currency: y.string().required()
     }),
     payment_method: y.object({
-        type: y.string().required(),
         installments: y.number().required(),
         capture: y.boolean().required(),
         soft_descriptor: y.string(),

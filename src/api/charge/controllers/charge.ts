@@ -5,7 +5,9 @@
 import { factories } from '@strapi/strapi'
 import { generateChargeTokenSchemaValidation } from '../content-types/validations';
 
-export default factories.createCoreController('api::charge.charge', ({ strapi }) => ({
+const entityUUID = 'api::charge.charge'
+
+export default factories.createCoreController(entityUUID, ({ strapi }) => ({
   async token (ctx) {
     const { body } = ctx.request
 
@@ -15,6 +17,13 @@ export default factories.createCoreController('api::charge.charge', ({ strapi })
       return ctx.badRequest(err.message, err)
     }
 
-    return {}
+    try {
+      const { data } = await strapi.service(entityUUID).generateCardToken(body) 
+
+      return data
+    } catch (err) {
+      console.log(err)
+      return ctx.badRequest(err.message, err)
+    }
   }
 }));
