@@ -65,12 +65,6 @@
             "relation": "oneToMany",
             "target": "api::inventory.inventory",
             "mappedBy": "product"
-        },
-        "orders": {
-            "type": "relation",
-            "relation": "oneToMany",
-            "target": "api::order.order",
-            "mappedBy": "product"
         }
     }
 }

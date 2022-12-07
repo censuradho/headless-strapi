@@ -23,3 +23,9 @@ export const generateChargeTokenSchemaValidation = y.object({
   }).required(),
   notification_urls: y.array().of(y.string())
 })
+
+export const orderSchemaValidation = y.object({
+  total: y.number().required(),
+  subTotal: y.number().required(),
+  inventories: y.array().of(y.number()).required()
+})

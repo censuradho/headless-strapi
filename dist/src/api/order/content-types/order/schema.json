@@ -16,17 +16,24 @@
             "type": "float",
             "required": true
         },
-        "product": {
-            "type": "relation",
-            "relation": "manyToOne",
-            "target": "api::product.product",
-            "inversedBy": "orders"
-        },
         "user": {
             "type": "relation",
             "relation": "manyToOne",
             "target": "plugin::users-permissions.user",
             "inversedBy": "orders"
+        },
+        "subTotal": {
+            "type": "float",
+            "required": true
+        },
+        "inventories": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::inventory.inventory"
+        },
+        "charge": {
+            "type": "json",
+            "required": true
         }
     }
 }

@@ -9,15 +9,24 @@ const entityUUID = 'api::charge.charge';
 exports.default = strapi_1.factories.createCoreController(entityUUID, ({ strapi }) => ({
     async token(ctx) {
         const { body } = ctx.request;
+        const { order, ...charge } = body;
         try {
-            await validations_1.generateChargeTokenSchemaValidation.validate(body);
+            await validations_1.generateChargeTokenSchemaValidation.validate(charge);
+            await validations_1.orderSchemaValidation.validate(order);
         }
         catch (err) {
             return ctx.badRequest(err.message, err);
         }
         try {
-            const { data } = await strapi.service(entityUUID).generateCardToken(body);
-            return data;
+            const { data: charge } = await strapi.service(entityUUID).generateCardToken(body);
+            const orderResult = await strapi.service('api::order.order').create({
+                data: {
+                    ...order,
+                    user: ctx.state.user.id,
+                    charge
+                }
+            });
+            return orderResult;
         }
         catch (err) {
             console.log(err);

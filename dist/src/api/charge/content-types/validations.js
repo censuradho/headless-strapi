@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateChargeTokenSchemaValidation = void 0;
+exports.orderSchemaValidation = exports.generateChargeTokenSchemaValidation = void 0;
 const y = __importStar(require("yup"));
 exports.generateChargeTokenSchemaValidation = y.object({
     description: y.string(),
@@ -47,4 +47,9 @@ exports.generateChargeTokenSchemaValidation = y.object({
         }).required()
     }).required(),
     notification_urls: y.array().of(y.string())
+});
+exports.orderSchemaValidation = y.object({
+    total: y.number().required(),
+    subTotal: y.number().required(),
+    inventories: y.array().of(y.number()).required()
 });
