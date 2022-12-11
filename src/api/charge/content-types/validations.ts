@@ -25,7 +25,10 @@ export const generateChargeTokenSchemaValidation = y.object({
 })
 
 export const orderSchemaValidation = y.object({
-  total: y.number().required(),
-  subTotal: y.number().required(),
-  inventories: y.array().of(y.number()).required()
+  inventories: y.array(
+    y.object({
+      id: y.number().required(),
+      amount: y.number().required(),
+    })
+  )
 })

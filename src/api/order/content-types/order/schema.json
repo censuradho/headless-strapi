@@ -22,10 +22,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "orders"
     },
-    "subTotal": {
-      "type": "float",
-      "required": true
-    },
     "inventories": {
       "type": "relation",
       "relation": "oneToMany",

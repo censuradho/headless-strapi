@@ -65,6 +65,9 @@
       "relation": "oneToMany",
       "target": "api::inventory.inventory",
       "mappedBy": "product"
+    },
+    "installments": {
+      "type": "integer"
     }
   }
 }

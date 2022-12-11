@@ -8,28 +8,29 @@ const validations_1 = require("../content-types/validations");
 const entityUUID = 'api::charge.charge';
 exports.default = strapi_1.factories.createCoreController(entityUUID, ({ strapi }) => ({
     async token(ctx) {
-        const { body } = ctx.request;
-        const { order, ...charge } = body;
         try {
+            const { body } = ctx.request;
+            const { order, ...charge } = body;
             await validations_1.generateChargeTokenSchemaValidation.validate(charge);
             await validations_1.orderSchemaValidation.validate(order);
-        }
-        catch (err) {
-            return ctx.badRequest(err.message, err);
-        }
-        try {
-            const { data: charge } = await strapi.service(entityUUID).generateCardToken(body);
+            await strapi.service('api::inventory.inventory').decrement(order.inventories);
+            const { data: chargePayload } = await strapi.service(entityUUID).generateCardToken(body);
+            const balance = await strapi.service('api::inventory.inventory').getBalance(order.inventories);
+            const inventoriesId = order.inventories.map(value => value.id);
             const orderResult = await strapi.service('api::order.order').create({
                 data: {
-                    ...order,
+                    inventories: inventoriesId,
+                    total: balance,
                     user: ctx.state.user.id,
-                    charge
+                    charge: {
+                        ...order,
+                        ...chargePayload,
+                    }
                 }
             });
             return orderResult;
         }
         catch (err) {
-            console.log(err);
             return ctx.badRequest(err.message, err);
         }
     }
