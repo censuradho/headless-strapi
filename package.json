@@ -21,7 +21,6 @@
     "axios": "0",
     "better-sqlite3": "7.4.6",
     "pg": "^8.8.0",
-    "strapi-stripe": "^2.5.1",
     "yup": "^0.32.11"
   },
   "author": {
