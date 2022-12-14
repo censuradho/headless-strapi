@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "langerieCarousel": {
+    "section1": {
       "type": "component",
       "repeatable": false,
       "component": "carousel.langerie"
@@ -28,14 +28,6 @@
         "audios"
       ]
     },
-    "heroMobile": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "sectionBanner1": {
       "type": "media",
       "multiple": false,
@@ -43,11 +35,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "lubrificantes": {
-      "type": "component",
-      "repeatable": false,
-      "component": "carousel.langerie"
     }
   }
 }

@@ -1,7 +1,8 @@
 {
     "collectionName": "components_carousel_langeries",
     "info": {
-        "displayName": "langerie"
+        "displayName": "section",
+        "description": ""
     },
     "options": {},
     "attributes": {
